@@ -2,11 +2,19 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5;
     public int facingDirection = 1;
 
     public Rigidbody2D rb;
     public Animator anim;
+    public Player_Combat player_Combat;
+
+    private void Update() 
+    {
+        if(Input.GetButtonDown("Slash"))
+        {
+            player_Combat.Attack();
+        }
+    }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -23,7 +31,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("horizontal", Mathf.Abs(horizontal));
         anim.SetFloat("vertical", Mathf.Abs(vertical));
 
-        rb.linearVelocity = new Vector2(horizontal, vertical) * speed;
+        rb.linearVelocity = new Vector2(horizontal, vertical) * StatsManager.Instance.speed;
         
     }
 
