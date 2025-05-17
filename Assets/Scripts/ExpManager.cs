@@ -23,6 +23,7 @@ public class ExpManager : MonoBehaviour
         if(currentExp >= expToLevel)
         {
             LevelUp();
+            StatsManager.Instance.damage += 2;
         }
         UpdateUI();
     }
